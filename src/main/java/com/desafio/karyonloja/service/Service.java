@@ -106,7 +106,10 @@ public class Service {
         return lojaFisica;
     }
 
-    public LojaFisica createLojaFisica(LojaFisica lojaFisica){
+    //Necessário existência de empresa para vincular à loja física
+    public LojaFisica createLojaFisica(LojaFisica lojaFisica) throws CompanyNotFoundException {
+        EmpresaDTO e = getEmpresa(lojaFisica.getEmpresa().getId());
+        lojaFisica.setCnpj(e.getCnpj());
         lojaFisicaRepository.save(lojaFisica);
         return lojaFisica;
 

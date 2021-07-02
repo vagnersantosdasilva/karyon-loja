@@ -7,6 +7,7 @@ import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Where(clause = "DELETED = 0")
@@ -20,6 +21,7 @@ public class LojaFisica {
     @Length(max=14,message = "CNPJ com tamanho  inválido")
     private String cnpj;
 
+    @NotEmpty(message = "O nome da loja é obrigatório")
     @Column(name="nome_loja" ,nullable = false )
     private String loja;
 

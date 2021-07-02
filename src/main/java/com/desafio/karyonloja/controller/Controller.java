@@ -79,7 +79,7 @@ public class Controller {
     }
 
     @PostMapping("/lojafisica")
-    public ResponseEntity<?> createLojaFisica(@RequestBody LojaFisica lojaFisica){
+    public ResponseEntity<?> createLojaFisica(@RequestBody LojaFisica lojaFisica) throws CompanyNotFoundException {
         LojaFisica loja = service.createLojaFisica(lojaFisica);
         ResponseEntity<?> responseEntity = new ResponseEntity<>(loja,HttpStatus.CREATED);
         return responseEntity;
